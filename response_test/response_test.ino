@@ -6,8 +6,9 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-  int jetson = Serial.read();
-  Serial.write(jetson); //test
+  String jetson = Serial.readString();
+  //Serial.write(jetson); //test
+  Serial.write(jetson);
   // String fromJetson = (String)(jetson);
   
   /**
@@ -15,7 +16,6 @@ void loop() {
   if ((String)(fromJetson).charAt(0) == '0') {
     // parse the String to confirm source, destination, 
   }
-
   // arm motor
   else {
     
