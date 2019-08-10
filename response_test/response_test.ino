@@ -7,27 +7,29 @@ void loop() {
   // put your main code here, to run repeatedly:
 
   String jetson = Serial.readString();
-  Serial.write(jetson);
+  // Serial.write(jetson);
 
   int index = 0;
-  int source = jetson.indexOf('S', index) + 2;
+  int source = jetson.indexOf("S", index) + 2;
   index = source;
 
-  int dest = jetson.indexOf('D', index) + 2;
+  int dest = jetson.indexOf("D", index) + 2;
   index = dest;
 
-  int id = jetson.indexOf('T', jetson.indexOf("MOTOR") + "MOTOR".length()) + 2;
+  int id = jetson.indexOf("T", jetson.indexOf("MOTOR") + 5) + 2;
   index = id;
 
-  int data = jetson.indexOf('P', index) + 2;
+  int data = jetson.indexOf("P", index) + 2;
   index = data;
   
   String sourceName = jetson.substring(source, dest - 2);
   String destName = jetson.substring(dest, id - 2);
   String idName = jetson.substring(id, data - 2);
-  data = String.toInt(jetson.substring(data, jetson.lastIndexOf("K")));
+  data = (jetson.substring(data, jetson.lastIndexOf("K"))).toInt();
 
-  Serial.write(destName + "/" + data);
+  Serial.print(destName + "/" + data);
+
+  Serial.write(1);
   
   /**
   // drivetrain motor
